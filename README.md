@@ -3,8 +3,8 @@
 The code here outputs (very-near) perfect samples from the Discrete Gaussian model using a (cutoff) version of the Coupling from the Past method. The following picture is an output from the program,
 under the additional constraint of a large deviation at a site. This exhibits the so-called harmonic pinnacle phenomenon.
 
-![image_notext](output_notext.svg)
+<img src="https://github.com/mbrc12/discrete_gaussian/blob/main/output_notext.svg" width="800" height="800">
 
 Here is the same image with the heights indicated.
 
-![image](output.svg)
+<img src="https://github.com/mbrc12/discrete_gaussian/blob/main/output.svg" width="800" height="800">
