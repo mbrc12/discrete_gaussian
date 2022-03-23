@@ -13,19 +13,19 @@ val seed = 57575
 given rng : Random = Random(seed)
 
 object Config {
-  val output = File("output_notext.svg")
+  val output = File("output.svg")
   val bgColor = Color.DARK_GRAY
   val fgColor = Color.BLACK
 
   val BETA = 0.2
-  val width = 1000
-  val height = 1000
+  val width = 800
+  val height = 800
   val latticeSize = 41
   val cellWidth = width / latticeSize
   val cellHeight = height / latticeSize
   val arcSize = 5
   val margin = 1
-  val fontSize : Float = 12
+  val fontSize : Float = 10
 
   val fixedRow = (latticeSize/2).toInt
   val fixedCol = (latticeSize/2).toInt
@@ -231,7 +231,7 @@ extension (g : Graphics2D) {
     val posY = Math.round(c.y - bounds.getHeight/2 + fontMetrics.getAscent)
 
     g.setPaint(fgColor)
-    // g.drawString(text, posX, posY)
+    g.drawString(text, posX, posY)
   }
 }
 
