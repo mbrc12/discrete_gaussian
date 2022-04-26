@@ -220,10 +220,10 @@ object ColorGradient2 {
   //   List(Array(268.0f/360, 0.37f, 0.31f), Array(41.0f/360, 0.6f, 0.92f))
 
   val colorSwatch : List[HSB] = 
-    // List("#67001f","#b2182b","#d6604d","#f4a582","#fddbc7","#f7f7f7","#d1e5f0","#92c5de","#4393c3","#2166ac","#053061")
+    List("#67001f","#b2182b","#d6604d","#f4a582","#fddbc7","#f7f7f7","#d1e5f0","#92c5de","#4393c3","#2166ac","#053061")
     // List("#f7fcf0","#e0f3db","#ccebc5","#a8ddb5","#7bccc4","#4eb3d3","#2b8cbe","#0868ac","#084081")
     // List("#001219","#005f73","#0a9396","#94d2bd","#e9d8a6","#ee9b00","#ca6702","#bb3e03","#ae2012","#9b2226")
-    List("#fde725", "#addc30", "#5ec962", "#28ae80", "#21918c", "#2c728e", "#3b528b", "#472d7b", "#440154")
+    // List("#fde725", "#addc30", "#5ec962", "#28ae80", "#21918c", "#2c728e", "#3b528b", "#472d7b", "#440154")
       .reverse
       .map(Color.decode)
       .map(c => Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), null))
@@ -273,7 +273,7 @@ extension (g : Graphics2D) {
   // c is the location of the center
   def cell(n : Int, c : Point) = { 
     import Config._
-    import ColorGradient.colorOf
+    import ColorGradient2.colorOf
 
     val color = colorOf(n)
     g.setPaint(color)
