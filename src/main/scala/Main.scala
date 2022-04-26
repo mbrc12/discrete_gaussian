@@ -13,8 +13,8 @@ val seed = 57575
 given rng : Random = Random(seed)
 
 object Config {
-  val textMode = false
-  val baseName = "output_swatch3"
+  val textMode = true
+  val baseName = "output_swatch3_standard"
   val output = File(baseName + (if (textMode) "_labels" else "") + ".svg")
   val bgColor = Color.DARK_GRAY
   val fgColor = Color.BLACK
@@ -27,11 +27,11 @@ object Config {
   val cellHeight = height / latticeSize
   val arcSize = 5
   val margin = 1
-  val fontSize : Float = 10
+  val fontSize : Float = 15
 
   val fixedRow = (latticeSize/2).toInt
   val fixedCol = (latticeSize/2).toInt
-  val fixedVal = 90
+  val fixedVal = 99
   val cutoff = fixedVal + 10
 
   val lattice = Array.ofDim[Point](latticeSize, latticeSize)
@@ -71,17 +71,17 @@ def CFTP(cutoff : Int) : DG = {
   import Config.{latticeSize => L, fixedRow, fixedCol, fixedVal}
   val random = LazyList.continually(Bits.sample(L))  
 
-  val topInit = DG(L, cutoff).updated(fixedRow, fixedCol, fixedVal)
-  val botInit = DG(L, -cutoff).updated(fixedRow, fixedCol, fixedVal)
+  val topInit = DG(L, cutoff) //.updated(fixedRow, fixedCol, fixedVal)
+  val botInit = DG(L, -cutoff) //.updated(fixedRow, fixedCol, fixedVal)
 
   val computeFinal = (N : Int) => {
     val sample = random.take(N).foldLeft((topInit, botInit)){
       case ((top, bot), bits) => {
-        if (bits.row != fixedRow || bits.col != fixedCol) {
+        // if (bits.row != fixedRow || bits.col != fixedCol) {
           val top1 = top.step(bits)
           val bot1 = bot.step(bits)
           (top1, bot1)
-        } else (top, bot)
+        // } else (top, bot)
     }}
     println(s" N = $N " + sample._1.ham_dist(sample._2))
     sample
